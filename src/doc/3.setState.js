@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+
 class From extends React.Component {
     constructor(props) {
         super(props);
@@ -19,17 +20,17 @@ class From extends React.Component {
         console.log(this.textInput.current);
         this.textInput.current.textInput.current.focus();
         this.setState({number:this.state.number+1});
-        console.log(this.state);
+        console.log(this.state); //0
         this.setState({number:this.state.number+1});
-        console.log(this.state);
+        console.log(this.state); //0
         // this.setState({number:this.state.number+1},()=> {
         //     console.log(this.state);
         // });
         setTimeout(()=> {
             this.setState({number:this.state.number+1});
-            console.log(this.state);
+            console.log(this.state); //2
             this.setState({number:this.state.number+1});
-            console.log(this.state)
+            console.log(this.state) //3
         })
     }
 }
