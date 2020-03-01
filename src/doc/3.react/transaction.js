@@ -23,7 +23,6 @@ let transaction = new Transaction([{
         console.log('initialize2')
     },
     close(){
-
         console.log('close2')
     }
 }]);
