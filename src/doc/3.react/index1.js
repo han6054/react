@@ -6,6 +6,17 @@ let batchingStrategy = {
     }
 };
 
+class Transaction {
+    constructor(wrappers) {
+        this.wrappers = wrappers;
+    }
+    perform(anyMethod) {
+        this.wrappers.forEach(wrapper => wrapper.initialize());
+        anyMethod.call();
+        this.wrappers.forEach(wrapper => wrapper.close());
+    }
+}
+
 // 更新器
 class Updater {
     constructor(component) {
@@ -44,11 +55,19 @@ class Component {
         return this.domElement;
     }
 }
+let transaction = new Transaction([{
+    initialize() {
+        batchingStrategy.isBatchingUpdaters = true;
+    },
+    close() {
+        batchingStrategy.batchedUpdates();
+        batchingStrategy.isBatchingUpdaters = false;
+    }
+    }]
+);
 window.trigger = function (event, method) {
-    batchingStrategy.isBatchingUpdaters = true;
-    event.target.component[method].call(event.target.component);
-    batchingStrategy.batchedUpdates();
-    batchingStrategy.isBatchingUpdaters = false;
+    let component = event.target.component;
+    transaction.perform(event.target.component[method].bind(component));
 };
 class Counter extends  Component{
     constructor(props) {
