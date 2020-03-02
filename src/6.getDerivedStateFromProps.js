@@ -29,9 +29,9 @@ class SubCounter extends Counter {
         console.log(nextProps, prevState);
         // return {date: Date.now()};
         if(nextProps.number%2 === 0) { // 没有调用setState，改变了子组件内部state
-            return {number: nextProps.number*2}
+            return {number: prevState.number + nextProps.number*2}
         } else {
-            return {number: nextProps.number*3}
+            return {number: prevState.number + nextProps.number*3}
         }
     }
     render() {
