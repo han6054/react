@@ -68,3 +68,11 @@ class Title extends PureComponent{
         return <div>{this.props.title}</div>
     }
 }
+
+function memo(FuncComponent) {
+   return class extends PureComponent {
+       render() {
+           return <FuncComponent {...this.props}/>
+       }
+   }
+}
