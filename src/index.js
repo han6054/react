@@ -5,8 +5,10 @@ import ReactDom from 'react-dom';
 // import Context from './doc/8.context'
 // import PurComponent from './doc/10.purComponent'
 // import MouseTracker from './doc/11.render/MouseTracker'
-import Picture from './doc/11.render/Picture'
-import './doc/13.redux/doc/counter'
+//import Picture from './doc/11.render/Picture'
+// import './doc/13.redux/doc/counter'
+import Counter from './doc/13.redux/component/Counter'
+
 
 //     <MouseTracker>
 //         {
@@ -21,4 +23,6 @@ import './doc/13.redux/doc/counter'
 //     // render props
 //     <Picture/>,
 //     document.getElementById('root'));
-
+ReactDom.render(
+    <Counter/>,
+    document.getElementById('root'));

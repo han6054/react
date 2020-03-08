@@ -24,10 +24,13 @@ export default function createStore(reducer, preloadedState) {
       return action;
     }
     function subscribe(listener) {
+       let subscribed = true;
        currentListener.push(listener);
        return function unsubscribe(listener) {
+           if(!subscribed) return;
            let index = currentListener.indexOf(listener);
-           currentListener.splice(index,1)
+           currentListener.splice(index,1);
+           subscribed = false;
        }
     }
     dispatch({type: ActionTypes.INIT});

@@ -39,4 +39,4 @@ incrementBtn.addEventListener('click',function(){
 });
 decrementBtn.addEventListener('click',function(){
     store.dispatch({type:DECREMENT});
-})
+});
