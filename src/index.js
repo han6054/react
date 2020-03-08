@@ -6,6 +6,8 @@ import ReactDom from 'react-dom';
 // import PurComponent from './doc/10.purComponent'
 // import MouseTracker from './doc/11.render/MouseTracker'
 import Picture from './doc/11.render/Picture'
+import './doc/13.redux/doc/counter'
+
 //     <MouseTracker>
 //         {
 //             (props) => <Picture {...props}/>
@@ -15,7 +17,8 @@ import Picture from './doc/11.render/Picture'
 //     // render props
 //     <MouseTracker render={(props) => <Picture {...props}/>}/>,
 
-ReactDom.render(
-    // render props
-    <Picture/>,
-    document.getElementById('root'));
+// ReactDom.render(
+//     // render props
+//     <Picture/>,
+//     document.getElementById('root'));
+
