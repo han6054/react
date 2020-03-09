@@ -18,7 +18,12 @@ export default function (mapStateToProps, mapDispatchToProps) {
               this.unsubscribe();
           }
           render() {
-              let actions = bindActionCreators(mapDispatchToProps, this.context.store.dispatch);
+              let actions = {};
+              if(typeof actions == 'function') {
+                  actions = mapDispatchToProps(this.context.store.dispatch)
+              } else {
+                  actions = bindActionCreators(mapDispatchToProps, this.context.store.dispatch);
+              }
               return <WrappedComponent dispatch={this.context.store.dispatch} {...this.state} {...actions}/>
           }
       }
