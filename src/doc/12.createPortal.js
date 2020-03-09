@@ -1,7 +1,7 @@
 // 插槽
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './modal.css'
+// import './modal.css'
 class Modal extends Component {
     constructor(){
         super();

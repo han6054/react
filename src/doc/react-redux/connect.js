@@ -19,7 +19,7 @@ export default function (mapStateToProps, mapDispatchToProps) {
           }
           render() {
               let actions = bindActionCreators(mapDispatchToProps, this.context.store.dispatch);
-              return <WrappedComponent {...this.state} {...actions}/>
+              return <WrappedComponent dispatch={this.context.store.dispatch} {...this.state} {...actions}/>
           }
       }
    }

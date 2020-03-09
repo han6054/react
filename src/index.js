@@ -5,10 +5,14 @@ import ReactDom from 'react-dom';
 // import Context from './doc/8.context'
 // import PurComponent from './doc/10.purComponent'
 // import MouseTracker from './doc/11.render/MouseTracker'
-//import Picture from './doc/11.render/Picture'
+// import Picture from './doc/11.render/Picture'
 // import './doc/13.redux/doc/counter'
+import Modal from './doc/12.createPortal'
 // import Counter from './doc/13.redux/component/Counter'
 
+ReactDom.render(
+    <Modal/>,
+    document.getElementById('root'));
 
 //     <MouseTracker>
 //         {
@@ -23,15 +27,13 @@ import ReactDom from 'react-dom';
 //     // render props
 //     <Picture/>,
 //     document.getElementById('root'));
-// ReactDom.render(
-//     <Counter/>,
-//     document.getElementById('root'));
 
-import Counter from './doc/react-redux/component/Counter';
-import {Provider} from './doc/react-redux/index';
-import store from './doc/react-redux/store';
-ReactDom.render((
-    <Provider store={store}>
-        <Counter/>
-    </Provider>
-),document.getElementById('root'));
+
+// import Counter from './doc/react-redux/component/Counter';
+// import {Provider} from './doc/react-redux/index';
+// import store from './doc/react-redux/store';
+// ReactDom.render((
+//     <Provider store={store}>
+//         <Counter/>
+//     </Provider>
+// ),document.getElementById('root'));
