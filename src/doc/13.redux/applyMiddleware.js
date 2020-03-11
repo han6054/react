@@ -1,5 +1,14 @@
 import compose from "./compose";
 
+//缓存老dispatch方法
+// let dispatch = store.dispatch
+// store.dispatch = function(action) {
+// console.log('老状态')
+// dispatch(action)
+// console.log('新状态')
+// }
+
+
 // export default function applyMiddleware(middleware) {
 //     return function (createStore) {
 //         return function (reducer) {

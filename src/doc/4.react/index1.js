@@ -16,7 +16,6 @@ class Transaction {
         this.wrappers.forEach(wrapper => wrapper.close());
     }
 }
-
 // 更新器
 class Updater {
     constructor(component) {
