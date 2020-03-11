@@ -3,6 +3,7 @@ import {createStore, applyMiddleware} from "../../13.redux";
 import reducer from "./reducer";
 import logger from "../../13.redux/logger";
 import thunk from '../../13.redux/thunk'
+import reduxPromise from '../../13.redux/promise'
 // let store = createStore(reducer);
 // let logger2 = store => dispatch => action => {
 //     console.log('oldState2', store.getState());
@@ -11,6 +12,6 @@ import thunk from '../../13.redux/thunk'
 // };
 
 let thunkWithExtraArgument = thunk.withExtraArgument(5);
-let store = applyMiddleware(thunkWithExtraArgument,logger)(createStore)(reducer,0);
+let store = applyMiddleware(reduxPromise, thunkWithExtraArgument,logger)(createStore)(reducer,0);
 
 export default store

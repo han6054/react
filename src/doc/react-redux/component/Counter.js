@@ -12,6 +12,8 @@ class Counter extends Component{
                 <button onClick={()=>this.props.dispatch({type: 'INCREMENT'})}>INCREMENT</button>
                 <br/>
                 <button onClick={this.props.asyncIncrement}>过一秒+1</button>
+                <br/>
+                <button onClick={this.props.promiseIncrement}>promise+1</button>
             </>
         )
     }
