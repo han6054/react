@@ -10,6 +10,7 @@ import thunk from '../../13.redux/thunk'
 //     console.log('newState2', store.getState());
 // };
 
-let store = applyMiddleware(thunk,logger)(createStore)(reducer,0);
+let thunkWithExtraArgument = thunk.withExtraArgument(5);
+let store = applyMiddleware(thunkWithExtraArgument,logger)(createStore)(reducer,0);
 
 export default store
