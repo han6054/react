@@ -4,7 +4,6 @@ function isPromise(payload) {
 
 
 export default ({dispatch, getState})=> next => action => {
-    console.log(action, 'promise');
     return isPromise(action.payload)? action.payload.then(result => {
         dispatch({...action, payload:result})
     }).catch(err=> {

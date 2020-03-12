@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="root" style="border:3px solid red;height:200px"></div>
+<button onclick="push('/a')">/a</button>
+<button onclick="push('/b')">/b</button>
+<button onclick="push('/c')">/c</button>
+</body>
+<script>
+    let root = document.getElementById('root');
+    window.onpopstate = (e) => {
+        console.log(e);
+       root.innerHTML = e.state.to;
+    };
+    //state变化触发页面渲染方法
+    function render(state, url) {
+        root.innerHTML = state.to || url
+    }
+    let oldPushState = window.history.pushState;
+    window.history.pushState = function(...args){
+        oldPushState.call(window.history,...args);
+        render( ...args);
+    };
+   function push(to) {
+        window.history.pushState({to}, null, to);
+   }
+</script>
+</html>
