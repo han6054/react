@@ -1,5 +1,10 @@
 import React,{Component} from 'react'
 import Context from './context'
+let pushState = window.history.pushState;
+window.history.pushState = (state,title,url)=>{
+    pushState.call(window.history,state,title,url);
+    window.onpushState.call(this,state,url);
+};
 export default class HashRouter extends Component {
     constructor(props) {
         super(props);
@@ -7,16 +12,24 @@ export default class HashRouter extends Component {
     }
     locationState = null;
     componentDidMount() {
-       window.location.hash = window.location.hash || '/';
-       window.addEventListener('hashchange', ()=> {
-           this.setState({
-               location: {
-                   ...this.state.location,
-                   pathname: window.location.hash.slice(1),
-                   state: this.locationState
-               }
-           })
-       })
+        window.onpopstate = function(event) {
+            this.setState({
+                location: {
+                    ...this.state.location,
+                    pathname: window.location.pathname,
+                    state: event.state
+                }
+            })
+        };
+        window.onpushState = function(state,pathname) {
+            this.setState({
+                location: {
+                    ...this.state.location,
+                    pathname,
+                    state
+                }
+            })
+        };
     }
     render() {
         let that = this;
@@ -31,10 +44,10 @@ export default class HashRouter extends Component {
                     if(typeof to === 'object'){
                         let {pathname,state} = to;
                         that.locationState = state;
-                        window.location.hash = pathname;
+                        window.history.pushState(state, '', pathname)
                     }else{
                         that.locationState = null;
-                        window.location.hash = to;
+                        window.history.pushState(null,'', to)
                     }
                 },
                 block(message){
