@@ -5,12 +5,15 @@ import {ReactReduxContext} from 'react-redux'
 export default class ConnectedRouter extends React.Component {
     static contextType = ReactReduxContext;
     componentDidMount() {
-        this.props.history.listen((location,action)=> {
+        this.unlisten = this.props.history.listen((location,action)=> {
             this.context.store.dispatch({
                 type:  LOCATION_CHANGE,
                 payload: {location,action}
             })
         })
+    }
+    componentWillUnmount() {
+        this.unlisten()
     }
     render() {
         let {history, children} = this.props;
